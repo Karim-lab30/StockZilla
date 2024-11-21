@@ -1,0 +1,31 @@
+﻿@model IEnumerable<StockZilla.Models.produits>
+
+@{
+    ViewBag.Title = "ListeProduit";
+}
+
+<h2>ListeProduit</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Quantité</th>
+            <th>Prix Moyen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produit in Model)
+        {
+            <tr>
+                <td>@produit.Id</td>
+                <td>@produit.nom_prod</td>
+                <td>@produit.catego.nom</td> 
+                <td>@produit.qte_prod</td>
+                <td>@produit.prix_moyen</td>
+            </tr>
+        }
+    </tbody>
+</table>
