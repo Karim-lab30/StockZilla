@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="95d9db3e2fa74c13b1ed615441ea7b26" Name="Diagram1">
-        <EntityTypeShape EntityType="Database1Model.achats" Width="1.5" PointX="0.875" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.achats" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.adresse" Width="1.5" PointX="1.5" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.catego" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.detailsachat" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.detailsvente" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.detailsvente" Width="1.5" PointX="11.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.livraison" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.produits" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.role" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />

@@ -26,6 +26,5 @@ namespace StockZilla.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<produits> produits { get; set; }
-    };
-    
+    }
 }

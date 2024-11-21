@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StockZilla.Models.produits>
+﻿@model IEnumerable<StockZilla.Models.ProduitModel>
 
 @{
     ViewBag.Title = "ListeProduit";
@@ -6,26 +6,36 @@
 
 <h2>ListeProduit</h2>
 
-<table>
+<table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
             <th>Id</th>
             <th>Nom</th>
             <th>Catégorie</th>
             <th>Quantité</th>
+            <th>Prix HT</th>
+            <th>TVA</th>
             <th>Prix Moyen</th>
+            <th>Remise</th>
+            <th>Prix Remise</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var produit in Model)
         {
-            <tr>
-                <td>@produit.Id</td>
-                <td>@produit.nom_prod</td>
-                <td>@produit.catego.nom</td> 
-                <td>@produit.qte_prod</td>
-                <td>@produit.prix_moyen</td>
-            </tr>
+         <tr>
+            <td>@produit.Id</td>
+            <td>@produit.NomProduit</td>
+            <td>@produit.NomCategorie</td>
+            <td>@produit.Quantite</td>
+            <td>@produit.Prix_Ht <span>€</span></td>
+            <td>@produit.TVA <span>%</span></td>
+            <td>@produit.PrixMoyen<span>€</span></td>
+            <td>@produit.Remise<span>%</span></td>
+            <td>(@produit.PrixMoyen)*(@produit.Remise)/100</td>
+         </tr>
         }
     </tbody>
 </table>
+
+

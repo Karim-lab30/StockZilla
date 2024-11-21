@@ -15,7 +15,7 @@ namespace StockZilla.Models
     
     public partial class Database1Entities : DbContext
     {
-        public Database1Entities(string v)
+        public Database1Entities()
             : base("name=Database1Entities")
         {
         }

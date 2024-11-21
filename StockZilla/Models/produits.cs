@@ -6,12 +6,12 @@
 //     Les modifications manuelles apportées à ce fichier sont remplacées si le code est régénéré.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 
 namespace StockZilla.Models
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class produits
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,19 +19,14 @@ namespace StockZilla.Models
         {
             this.detailsachat = new HashSet<detailsachat>();
             this.detailsvente = new HashSet<detailsvente>();
-
-
         }
-
-
+    
         public int Id { get; set; }
         public string nom_prod { get; set; }
         public int id_categorie { get; set; }
         public Nullable<int> qte_prod { get; set; }
         public Nullable<double> prix_moyen { get; set; }
-
-
-
+    
         public virtual catego catego { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detailsachat> detailsachat { get; set; }
@@ -39,4 +34,3 @@ namespace StockZilla.Models
         public virtual ICollection<detailsvente> detailsvente { get; set; }
     }
 }
-
