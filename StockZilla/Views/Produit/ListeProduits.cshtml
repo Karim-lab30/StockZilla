@@ -1,39 +1,77 @@
 ﻿@model IEnumerable<StockZilla.Models.ProduitModel>
 
 @{
-    ViewBag.Title = "ListeProduit";
+    ViewBag.Title = "Liste Produits";
 }
 
-<h2>ListeProduit</h2>
+
+
+<h2>Liste Produits</h2>
+<p>
+    <a href="@Url.Action("Create", "Produit")" class="btn btn-primary">Créer un nouveau produit</a>
+</p>
+
 
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
             <th>Id</th>
             <th>Nom</th>
-            <th>Catégorie</th>
+            <th>
+                Catégorie
+                <a href="@Url.Action("ListeProduit", new { categorieId = (object)null })">
+                    <i class="fas fa-sync-alt" style="display:flex;float:right; color:slategrey" "></i>
+                </a>
+            </th>
             <th>Quantité</th>
             <th>Prix HT</th>
             <th>TVA</th>
             <th>Prix Moyen</th>
             <th>Remise</th>
             <th>Prix Remise</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var produit in Model)
         {
-         <tr>
-            <td>@produit.Id</td>
-            <td>@produit.NomProduit</td>
-            <td>@produit.NomCategorie</td>
-            <td>@produit.Quantite</td>
-            <td>@produit.Prix_Ht <span>€</span></td>
-            <td>@produit.TVA <span>%</span></td>
-            <td>@produit.PrixMoyen<span>€</span></td>
-            <td>@produit.Remise<span>%</span></td>
-            <td>(@produit.PrixMoyen)*(@produit.Remise)/100</td>
-         </tr>
+            <tr>
+                <td>@produit.Id</td>
+                <td>@produit.NomProduit</td>
+                <td>
+                    @produit.NomCategorie
+                    <a href="@Url.Action("ListeProduit", new { categorieId = produit.IdCategorie })">
+                        <i class="fa-solid fa-sort" style="display:flex;float:right;color:slategrey"></i>
+
+                    </a>
+                </td>
+                <td>@produit.Quantite</td>
+                <td>@produit.Prix_Ht <span>€</span></td>
+                <td>@produit.TVA <span>%</span></td>
+                <td>@produit.PrixMoyen<span>€</span></td>
+                <td>@produit.Remise<span>%</span></td>
+                <td>@(produit.PrixMoyen-(produit.PrixMoyen*produit.Remise/ 100))<span>€</span></td>
+                <td>
+                    <a href="@Url.Action("Details", "Produit", new { id = produit.Id })" title="Voir">
+                        <i class="fa-solid fa-eye" style="padding-left: 15px; color: slategrey;"></i>
+                    </a>
+                    <a href="@Url.Action("Edit", "Produit", new { id = produit.Id })" title="Modifier">
+                        <i class="fa-solid fa-pen-to-square" style="color: slategrey; padding-left: 15px;"></i>
+                    </a>
+
+
+                    <form action="@Url.Action("DeleteProduit", "Produit")" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@produit.Id" />
+                        <button type="submit" title="Supprimer" style="background:none; border:none; cursor:pointer;">
+                            <i class="fa-solid fa-trash" style="color: slategrey; padding-left:15px;"></i>
+                        </button>
+                    </form>
+
+
+                </td>
+
+
+            </tr>
         }
     </tbody>
 </table>

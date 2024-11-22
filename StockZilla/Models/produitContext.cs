@@ -11,7 +11,8 @@ namespace StockZilla.Models
         public produitContext() : base("name=Database1Entities") { }
 
         public DbSet<produits> Produits { get; set; }
-       
+        public DbSet<catego> Categories { get; set; }
+
 
     }
 

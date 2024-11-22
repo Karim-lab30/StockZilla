@@ -259,6 +259,9 @@
     <Content Include="Views\Produit\ListeProduits.cshtml">
       <BrowseToURL>~/Produit/ListeProduits</BrowseToURL>
     </Content>
+    <Content Include="Views\Produit\Details.cshtml" />
+    <Content Include="Views\Produit\Edit.cshtml" />
+    <Content Include="Views\Produit\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

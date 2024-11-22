@@ -15,6 +15,9 @@ namespace StockZilla.Models
         public int? TVA { get; set; }
         public double? Prix_Ht { get; set; }
         public double? Remise { get; set; }
+
+        public int? IdCategorie { get; set; }
+
     }
 
 }
