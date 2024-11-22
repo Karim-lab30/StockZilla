@@ -17,11 +17,11 @@ namespace StockZilla.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public users()
         {
-            this.achats_fourn = new HashSet<achats>();
-            this.achats_acheteur = new HashSet<achats>();
+            this.achats = new HashSet<achats>();
+            this.achats1 = new HashSet<achats>();
             this.adresse = new HashSet<adresse>();
-            this.vente_client = new HashSet<vente>();
-            this.vente_vendeur = new HashSet<vente>();
+            this.vente = new HashSet<vente>();
+            this.vente1 = new HashSet<vente>();
         }
     
         public int Id { get; set; }
@@ -36,16 +36,16 @@ namespace StockZilla.Models
         public int id_adresse_fav { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<achats> achats_fourn { get; set; }
+        public virtual ICollection<achats> achats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<achats> achats_acheteur { get; set; }
+        public virtual ICollection<achats> achats1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<adresse> adresse { get; set; }
-        public virtual adresse adressefav { get; set; }
+        public virtual adresse adresse1 { get; set; }
         public virtual role role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<vente> vente_client { get; set; }
+        public virtual ICollection<vente> vente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<vente> vente_vendeur { get; set; }
+        public virtual ICollection<vente> vente1 { get; set; }
     }
 }

@@ -29,8 +29,8 @@ namespace StockZilla.Models
         public bool livre { get; set; }
         public Nullable<int> num_commande { get; set; }
     
-        public virtual users users_fourn { get; set; }
-        public virtual users users_acheteur { get; set; }
+        public virtual users users { get; set; }
+        public virtual users users1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detailsachat> detailsachat { get; set; }
     }

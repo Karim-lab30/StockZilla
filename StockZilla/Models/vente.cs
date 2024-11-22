@@ -42,7 +42,7 @@ namespace StockZilla.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detailsvente> detailsvente { get; set; }
         public virtual livraison livraison { get; set; }
-        public virtual users users_client { get; set; }
-        public virtual users users_vendeur { get; set; }
+        public virtual users users { get; set; }
+        public virtual users users1 { get; set; }
     }
 }

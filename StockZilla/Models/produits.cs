@@ -26,6 +26,7 @@ namespace StockZilla.Models
         public int id_categorie { get; set; }
         public Nullable<int> qte_prod { get; set; }
         public Nullable<double> prix_moyen { get; set; }
+        public byte[] image { get; set; }
     
         public virtual catego catego { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

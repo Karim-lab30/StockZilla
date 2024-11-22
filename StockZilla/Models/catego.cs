@@ -23,6 +23,7 @@ namespace StockZilla.Models
         public int Id { get; set; }
         public string nom { get; set; }
         public Nullable<double> tva { get; set; }
+        public byte[] image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<produits> produits { get; set; }

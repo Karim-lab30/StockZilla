@@ -5,29 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="95d9db3e2fa74c13b1ed615441ea7b26" Name="Diagram1">
-        <EntityTypeShape EntityType="Database1Model.achats" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.adresse" Width="1.5" PointX="1.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.catego" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.detailsachat" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.detailsvente" Width="1.5" PointX="11.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.livraison" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.produits" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.role" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.users" Width="1.5" PointX="3.875" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.vente" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
-        <AssociationConnector Association="Database1Model.FK_achats_fourn" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_achats_users" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_details_achat_achats" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_user_adresse" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_users_adresse" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_produits_categorie" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_details_achat_produit" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_details_vente_produit" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_details_vente_vente" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_vente_livraison" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_users_role" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_vente_client" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_vente_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Database1Model.achats" Width="1.5" PointX="5.25" PointY="14.25" />
+        <EntityTypeShape EntityType="Database1Model.adresse" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="Database1Model.catego" Width="1.5" PointX="6" PointY="1.875" />
+        <EntityTypeShape EntityType="Database1Model.detailsachat" Width="1.5" PointX="7.5" PointY="14.375" />
+        <EntityTypeShape EntityType="Database1Model.detailsvente" Width="1.5" PointX="10.5" PointY="6.75" />
+        <EntityTypeShape EntityType="Database1Model.livraison" Width="1.5" PointX="6" PointY="9.125" />
+        <EntityTypeShape EntityType="Database1Model.produits" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Database1Model.role" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="Database1Model.users" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="Database1Model.vente" Width="1.5" PointX="8.25" PointY="5.5" />
+        <AssociationConnector Association="Database1Model.FK_achats_fourn" />
+        <AssociationConnector Association="Database1Model.FK_achats_users" />
+        <AssociationConnector Association="Database1Model.FK_details_achat_achats" />
+        <AssociationConnector Association="Database1Model.FK_user_adresse" />
+        <AssociationConnector Association="Database1Model.FK_users_adresse" />
+        <AssociationConnector Association="Database1Model.FK_produits_categorie" />
+        <AssociationConnector Association="Database1Model.FK_details_achat_produit" />
+        <AssociationConnector Association="Database1Model.FK_details_vente_produit" />
+        <AssociationConnector Association="Database1Model.FK_details_vente_vente" />
+        <AssociationConnector Association="Database1Model.FK_vente_livraison" />
+        <AssociationConnector Association="Database1Model.FK_users_role" />
+        <AssociationConnector Association="Database1Model.FK_vente_client" />
+        <AssociationConnector Association="Database1Model.FK_vente_users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

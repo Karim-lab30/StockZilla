@@ -10,8 +10,8 @@ namespace StockZilla.Models
     {
         public categoContext() : base("name=Database1Entities") { }
 
-        public DbSet<catego> Catego { get; set; }
-
+        public DbSet<catego> Categories { get; set; }
+        public DbSet<produits> Produits { get; set; }
 
     }
 

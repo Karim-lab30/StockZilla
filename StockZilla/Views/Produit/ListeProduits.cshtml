@@ -28,8 +28,11 @@
             <th>TVA</th>
             <th>Prix Moyen</th>
             <th>Remise</th>
+
             <th>Prix Remise</th>
+            <th>Image</th>
             <th>Action</th>
+
         </tr>
     </thead>
     <tbody>
@@ -49,8 +52,22 @@
                 <td>@produit.Prix_Ht <span>€</span></td>
                 <td>@produit.TVA <span>%</span></td>
                 <td>@produit.PrixMoyen<span>€</span></td>
+
                 <td>@produit.Remise<span>%</span></td>
+
+
                 <td>@(produit.PrixMoyen-(produit.PrixMoyen*produit.Remise/ 100))<span>€</span></td>
+                <td>
+                    @if (produit.ImageBase64 != null)
+                    {
+                        <img src="data:image/jpeg;base64,@produit.ImageBase64" alt="Image" style="width: 50px; height: 50px;" />
+                    }
+                    else
+                    {
+                        <span>Aucune image</span>
+                    }
+                </td>
+
                 <td>
                     <a href="@Url.Action("Details", "Produit", new { id = produit.Id })" title="Voir">
                         <i class="fa-solid fa-eye" style="padding-left: 15px; color: slategrey;"></i>

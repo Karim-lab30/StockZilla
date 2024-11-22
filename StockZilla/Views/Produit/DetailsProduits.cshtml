@@ -1,0 +1,53 @@
+﻿@model StockZilla.Models.ProduitModel
+
+@{
+    ViewBag.Title = "DetailsProduits";
+}
+
+<h2>DetailsProduits</h2>
+
+<div class="container mt-4">
+    <h2 class="text-center">Détails du Produit</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>@Model.NomProduit</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>@Model.NomCategorie</td>
+        </tr>
+        <tr>
+            <th>Quantité</th>
+            <td>@Model.Quantite</td>
+        </tr>
+        <tr>
+            <th>Prix HT (€)</th>
+            <td>@Model.Prix_Ht</td>
+        </tr>
+        <tr>
+            <th>TVA (%)</th>
+            <td>@Model.TVA</td>
+        </tr>
+        <tr>
+            <th>Prix Moyen (€)</th>
+            <td>@Model.PrixMoyen</td>
+        </tr>
+        <tr>
+            <th>Remise (%)</th>
+            <td>@Model.Remise</td>
+        </tr>
+        <tr>
+            <th>Prix après remise (€)</th>
+            <td>@(Model.PrixMoyen - (Model.PrixMoyen * Model.Remise / 100))</td>
+        </tr>
+    </table>
+
+    <div class="text-end">
+        <a href="@Url.Action("ProduitsParCategorie", "Produit", new { Idproduit = Model.Id })" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+</div>

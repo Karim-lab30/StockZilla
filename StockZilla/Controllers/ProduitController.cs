@@ -11,7 +11,7 @@ namespace StockZilla.Controllers
     public class ProduitController : Controller
     {
     produitContext prod =new produitContext();
-        
+
         public ActionResult ListeProduit(int? categorieId)
         {
             var produitQuery = prod.Produits
@@ -27,10 +27,10 @@ namespace StockZilla.Controllers
                     TVA = p.detailsvente.FirstOrDefault().tva,
                     Prix_Ht = p.detailsvente.FirstOrDefault().prix_ht,
                     Remise = p.detailsvente.FirstOrDefault().remise,
-                    IdCategorie = p.id_categorie 
+                    IdCategorie = p.id_categorie,
+                    Image = p.image
                 });
 
-            
             if (categorieId.HasValue)
             {
                 produitQuery = produitQuery.Where(p => p.IdCategorie == categorieId.Value);
@@ -38,8 +38,75 @@ namespace StockZilla.Controllers
 
             var ProduitjoinCategorieDetails = produitQuery.ToList();
 
+            // Conversion de l'image en base64
+            foreach (var produit in ProduitjoinCategorieDetails)
+            {
+                if (produit.Image != null)
+                {
+                    produit.ImageBase64 = Convert.ToBase64String(produit.Image);
+                }
+            }
+
             return View("ListeProduits", ProduitjoinCategorieDetails);
         }
+        public ActionResult ProduitsParCategorie(string categorieNom)
+        {
+            
+            var produits = prod.Produits
+                .Where(p => p.catego.nom == categorieNom)
+                .Select(p => new ProduitModel
+                {
+                    Id = p.Id,
+                    NomProduit = p.nom_prod,
+                    NomCategorie = p.catego.nom,
+                    Quantite = p.qte_prod,
+                    PrixMoyen = p.prix_moyen,
+                    TVA = p.detailsvente.FirstOrDefault().tva,
+                    Prix_Ht = p.detailsvente.FirstOrDefault().prix_ht,
+                    Remise = p.detailsvente.FirstOrDefault().remise,
+                    Image = p.image
+                }).ToList();
+
+            
+            ViewBag.CategorieNom = categorieNom;
+
+            foreach (var produit in produits)
+            {
+                if (produit.Image != null)
+                {
+                    produit.ImageBase64 = Convert.ToBase64String(produit.Image);
+                }
+            }
+            return View("ProduitsParCategorie", produits);
+        }
+        public ActionResult DetailsProduits(int idprod)
+        {
+
+            var produit = prod.Produits.Include("catego").Include("detailsvente")
+                .Where(p => p.Id == idprod)
+                .Select(p => new ProduitModel
+                {
+                    Id = p.Id,
+                    NomProduit = p.nom_prod,
+                    NomCategorie = p.catego.nom,
+                    Quantite = p.qte_prod,
+                    PrixMoyen = p.prix_moyen,
+                    TVA = p.detailsvente.FirstOrDefault().tva,
+                    Prix_Ht = p.detailsvente.FirstOrDefault().prix_ht,
+                    Remise = p.detailsvente.FirstOrDefault().remise,
+                    IdCategorie = p.id_categorie
+                })
+                .FirstOrDefault();
+
+            if (produit == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(produit);
+        }
+
 
         public ActionResult Details(int id)
         {
@@ -162,7 +229,7 @@ namespace StockZilla.Controllers
             ViewBag.Categories = new SelectList(prod.Categories, "Id", "Nom");
             return View();
         }
-       
+        
 
 
 

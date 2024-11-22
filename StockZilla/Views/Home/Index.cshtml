@@ -1,3 +1,22 @@
-﻿@{
+﻿@model IEnumerable<StockZilla.Models.CategoModel>
+
+
+@{
     ViewBag.Title = "Home Page";
 }
+<h1>Nos Categories </h1>
+<div class="container" style="display:grid; grid-template-columns:auto auto auto auto; gap:10px;">
+    @foreach (var catego in Model)
+    {
+
+        <div class="card" style="width: 20rem;">
+            <img src="data:image/jpeg;base64,@catego.ImageBase64" style="; height: 200px;" class="card-img-top" alt="Accroche HTML">
+            <div class="card-body">
+                <h2 class="card-title">@catego.NomCategorie</h2>
+                <a href="@Url.Action("ProduitsParCategorie", "Produit", new { categorieNom = catego.NomCategorie })" class="btn btn-primary">Voir+</a>
+
+
+            </div>
+        </div>
+    }
+</div>

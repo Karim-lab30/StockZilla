@@ -144,6 +144,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\categoContext.cs" />
+    <Compile Include="Models\CategoModel.cs" />
     <Compile Include="Models\ProduitModel.cs" />
     <Compile Include="Models\produitContext.cs" />
     <Compile Include="Models\detailsachat.cs">
@@ -262,6 +263,8 @@
     <Content Include="Views\Produit\Details.cshtml" />
     <Content Include="Views\Produit\Edit.cshtml" />
     <Content Include="Views\Produit\Create.cshtml" />
+    <Content Include="Views\Produit\ProduitsParCategorie.cshtml" />
+    <Content Include="Views\Produit\DetailsProduits.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,10 @@ namespace StockZilla.Models
         public double? Remise { get; set; }
 
         public int? IdCategorie { get; set; }
+
+        public byte[] Image { get; set; }
+        public string ImageBase64 { get; set; }
+
 
     }
 
