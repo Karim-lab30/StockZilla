@@ -10,7 +10,7 @@ namespace StockZilla.Controllers
 {
     public class ProduitController : Controller
     {
-    produitContext prod =new produitContext();
+        produitContext prod = new produitContext();
 
         public ActionResult ListeProduit(int? categorieId)
         {
@@ -49,11 +49,11 @@ namespace StockZilla.Controllers
 
             return View("ListeProduits", ProduitjoinCategorieDetails);
         }
-        public ActionResult ProduitsParCategorie(string categorieNom)
+        public ActionResult ProduitsParCategorie(int? IdCategorie, string categorieNom = null)
         {
-            
-            var produits = prod.Produits
-                .Where(p => p.catego.nom == categorieNom)
+            // Vérifier si l'ID ou le nom de la catégorie est fourni
+            var produitsQuery = prod.Produits
+                .Include("catego")
                 .Select(p => new ProduitModel
                 {
                     Id = p.Id,
@@ -64,12 +64,25 @@ namespace StockZilla.Controllers
                     TVA = p.detailsvente.FirstOrDefault().tva,
                     Prix_Ht = p.detailsvente.FirstOrDefault().prix_ht,
                     Remise = p.detailsvente.FirstOrDefault().remise,
-                    Image = p.image
-                }).ToList();
+                    Image = p.image,
+                    IdCategorie = p.id_categorie
+                });
 
-            
-            ViewBag.CategorieNom = categorieNom;
+            // Filtrer par ID si fourni
+            if (IdCategorie.HasValue)
+            {
+                produitsQuery = produitsQuery.Where(p => p.IdCategorie == IdCategorie.Value);
+                ViewBag.CategorieNom = prod.Categories.FirstOrDefault(c => c.Id == IdCategorie)?.nom;
+            }
+            else if (!string.IsNullOrEmpty(categorieNom))
+            {
+                produitsQuery = produitsQuery.Where(p => p.NomCategorie == categorieNom);
+                ViewBag.CategorieNom = categorieNom;
+            }
 
+            var produits = produitsQuery.ToList();
+
+            // Convertir les images en base64
             foreach (var produit in produits)
             {
                 if (produit.Image != null)
@@ -77,11 +90,12 @@ namespace StockZilla.Controllers
                     produit.ImageBase64 = Convert.ToBase64String(produit.Image);
                 }
             }
+
             return View("ProduitsParCategorie", produits);
         }
+
         public ActionResult DetailsProduits(int idprod)
         {
-
             var produit = prod.Produits.Include("catego").Include("detailsvente")
                 .Where(p => p.Id == idprod)
                 .Select(p => new ProduitModel
@@ -94,7 +108,8 @@ namespace StockZilla.Controllers
                     TVA = p.detailsvente.FirstOrDefault().tva,
                     Prix_Ht = p.detailsvente.FirstOrDefault().prix_ht,
                     Remise = p.detailsvente.FirstOrDefault().remise,
-                    IdCategorie = p.id_categorie
+                    IdCategorie = p.id_categorie,
+                    Image = p.image
                 })
                 .FirstOrDefault();
 
@@ -103,14 +118,46 @@ namespace StockZilla.Controllers
                 return HttpNotFound();
             }
 
+            // Convertir l'image en base64 pour l'affichage
+            if (produit.Image != null)
+            {
+                produit.ImageBase64 = Convert.ToBase64String(produit.Image);
+            }
 
             return View(produit);
+        }
+        [HttpPost]
+        public ActionResult Acheter(int idprod)
+        {
+            // Récupérer le produit depuis la base de données
+            var produit = prod.Produits.FirstOrDefault(p => p.Id == idprod);
+
+            if (produit == null)
+            {
+                return HttpNotFound(); // Si le produit n'est pas trouvé
+            }
+
+            // Vérifier si la quantité est disponible (plus grande que 0)
+            if (produit.qte_prod > 0)
+            {
+                produit.qte_prod--; // Réduire la quantité de 1
+                prod.SaveChanges(); // Sauvegarder les changements dans la base de données
+
+                TempData["Message"] = "Achat effectué avec succès !"; // Message de succès
+            }
+            else
+            {
+                TempData["Message"] = "Désolé, ce produit est en rupture de stock."; // Message si rupture de stock
+            }
+
+            // Rediriger vers la page des détails du produit
+            return RedirectToAction("DetailsProduits", new { idprod = produit.Id });
         }
 
 
         public ActionResult Details(int id)
         {
-            
+
             var produit = prod.Produits.Include("catego").Include("detailsvente")
                 .Where(p => p.Id == id)
                 .Select(p => new ProduitModel
@@ -132,7 +179,7 @@ namespace StockZilla.Controllers
                 return HttpNotFound();
             }
 
-            
+
             return View(produit);
         }
         // GET: Produit/Edit/5
@@ -229,7 +276,7 @@ namespace StockZilla.Controllers
             ViewBag.Categories = new SelectList(prod.Categories, "Id", "Nom");
             return View();
         }
-        
+
 
 
 

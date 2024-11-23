@@ -14,6 +14,7 @@ namespace StockZilla.Models
         public DbSet<catego> Categories { get; set; }
 
 
+
     }
 
    

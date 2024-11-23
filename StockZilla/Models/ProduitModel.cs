@@ -21,8 +21,11 @@ namespace StockZilla.Models
 
         public byte[] Image { get; set; }
         public string ImageBase64 { get; set; }
+       
+
 
 
     }
+   
 
 }
